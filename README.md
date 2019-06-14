@@ -10,9 +10,9 @@ This is the custom handler that we can put in WSO2 APIM where it will alow you t
 
 3) Add the handler class to the <APIM_HOME>/repository/resources/api_templates/velocity_template.xml
 
-<handlers xmlns="http://ws.apache.org/ns/synapse">
-
-	<handler class="org.wso2.custom.authenticator.handler.CustomAPIAuthenticationHandler"/>
+      
+      <handlers xmlns="http://ws.apache.org/ns/synapse">
+           <handler class="org.wso2.custom.authenticator.handler.CustomAPIAuthenticationHandler"/>
           ......
 
 4) Restart the APIM. You should now try the API with harlf header and half cookie
