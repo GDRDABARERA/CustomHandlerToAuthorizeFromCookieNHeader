@@ -17,4 +17,6 @@ This is the custom handler that we can put in WSO2 APIM where it will alow you t
            <handler class="org.wso2.custom.authenticator.handler.CustomAPIAuthenticationHandler"/>
           ......
 
-4) Restart the APIM. You should now try the API with harlf header and half cookie
+4) Restart the APIM. 
+
+5) How to test? - You should now try by sending second part of the access token as a refID header parameter in the request.
