@@ -43,6 +43,7 @@ public class CustomAPIAuthenticationHandler extends AbstractHandler {
                     log.info("Cookie header is present, hence assuming that cookie is enabled for the browser");
                 }
 
+                // "Bearer" part is coming from  Authorization Header parameter value. So no need to add again.
                 String tokenPart1 = authorizationHeader;
                 String tokenPart2 = tokenCookie;
                 accessToken = tokenPart1.concat(tokenPart2);
