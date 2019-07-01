@@ -13,7 +13,7 @@ public class CustomAPIAuthenticationHandler extends AbstractHandler {
 
 
     private static Log log = LogFactory.getLog(CustomAPIAuthenticationHandler.class);
-    private String COOKIE_HEADER = "refID";
+    private String PARAM_HEADER = "refID";
     public boolean handleRequest(MessageContext messageContext) {
         try {
             if (authenticate(messageContext)) {
@@ -32,7 +32,7 @@ public class CustomAPIAuthenticationHandler extends AbstractHandler {
     public boolean authenticate(MessageContext synCtx) throws APISecurityException {
         Map headers = getTransportHeaders(synCtx);
         String accessToken;
-        String tokenCookie = getCookieHeader(headers);
+        String tokenCookie = getParameterHeader(headers);
         String authorizationHeader = getAuthorizationHeader(headers);
 
         if (authorizationHeader != null) {
@@ -64,29 +64,11 @@ public class CustomAPIAuthenticationHandler extends AbstractHandler {
         return (String) headers.get("Authorization");
     }
 
-    private String getCookieHeader(Map headers) {
-        return (String) headers.get(COOKIE_HEADER);
+    private String getParameterHeader(Map headers) {
+        return (String) headers.get(PARAM_HEADER);
     }
 
-   /* private String getAccessTokenFromCookie(String CookieHeader) {
-        if (log.isDebugEnabled()) {
-            log.info("The Cookie header " + CookieHeader);
-        }
-        if (CookieHeader != null) {
-            String CookieName = "access_token";
-            String[] ca = CookieHeader.split(";");
-            for (int i = 0; i < ca.length; i++) {
-                String[] c = ca[i].split("=");
-                if (c.length == 2) {
-                    if (c[0].contains(CookieName)) {
-                        return c[1];
-                    }
-                }
-            }
-        }
 
-        return  null;
-    }*/
 
     private Map getTransportHeaders(MessageContext messageContext) {
         return (Map) ((Axis2MessageContext) messageContext).getAxis2MessageContext().
