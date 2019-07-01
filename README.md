@@ -18,3 +18,5 @@ This is the custom handler that we can put in WSO2 APIM where it will alow you t
           ......
 
 4) Restart the APIM. You should now try the API with harlf header and half cookie
+
+5) How to test? - You can not try the requests using CURL, you need to use a UI client like POST-MAN to add the Cookie as "access_token"
