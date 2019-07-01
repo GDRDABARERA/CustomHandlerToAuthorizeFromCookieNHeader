@@ -13,7 +13,6 @@ public class CustomAPIAuthenticationHandler extends AbstractHandler {
 
 
     private static Log log = LogFactory.getLog(CustomAPIAuthenticationHandler.class);
-    private String COOKIE_HEADER = "refID";
     public boolean handleRequest(MessageContext messageContext) {
         try {
             if (authenticate(messageContext)) {
@@ -32,7 +31,7 @@ public class CustomAPIAuthenticationHandler extends AbstractHandler {
     public boolean authenticate(MessageContext synCtx) throws APISecurityException {
         Map headers = getTransportHeaders(synCtx);
         String accessToken;
-        String tokenCookie = getCookieHeader(headers);
+        String tokenCookie = getAccessTokenFromCookie(getCookieHeader(headers));
         String authorizationHeader = getAuthorizationHeader(headers);
 
         if (authorizationHeader != null) {
@@ -65,10 +64,10 @@ public class CustomAPIAuthenticationHandler extends AbstractHandler {
     }
 
     private String getCookieHeader(Map headers) {
-        return (String) headers.get(COOKIE_HEADER);
+        return (String) headers.get("Cookie");
     }
 
-   /* private String getAccessTokenFromCookie(String CookieHeader) {
+    private String getAccessTokenFromCookie(String CookieHeader) {
         if (log.isDebugEnabled()) {
             log.info("The Cookie header " + CookieHeader);
         }
@@ -86,7 +85,7 @@ public class CustomAPIAuthenticationHandler extends AbstractHandler {
         }
 
         return  null;
-    }*/
+    }
 
     private Map getTransportHeaders(MessageContext messageContext) {
         return (Map) ((Axis2MessageContext) messageContext).getAxis2MessageContext().

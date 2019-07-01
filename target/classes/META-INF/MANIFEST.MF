@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-SymbolicName: org.wso2.custom.authenticator.handler
 Built-By: dinali
 Bundle-ManifestVersion: 2
-Bnd-LastModified: 1561148525516
+Bnd-LastModified: 1560538636885
 Import-Package: javax.servlet;version="[2.6,3)",javax.servlet.http;ver
  sion="[2.6,3)",org.apache.axis2.context;version="[1.6,2)";resolution:
  =optional,org.apache.commons.logging;version="[1.2,2)";resolution:=op
@@ -20,8 +20,8 @@ DynamicImport-Package: *
 Tool: Bnd-1.43.0
 Export-Package: org.wso2.custom.authenticator.handler;uses:="org.apach
  e.synapse.rest,org.apache.synapse.core.axis2,org.apache.commons.loggi
- ng,org.wso2.carbon.apimgt.gateway.handlers.security,org.apache.synaps
- e,org.apache.axis2.context";version="1.0.0"
+ ng,org.wso2.carbon.apimgt.gateway.handlers.security,org.apache.axis2.
+ context,org.apache.synapse";version="1.0.0"
 Bundle-Version: 1.0.0
 Bundle-Name: org.wso2.custom.authenticator.handler
 Created-By: Apache Maven Bundle Plugin
